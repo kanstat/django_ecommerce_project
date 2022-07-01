@@ -4,13 +4,13 @@
 <div class="row">
     {% for product in data %}
     <div class="col-lg-4">
-        <img class="thumbnail" src="{% static 'images/cream.jpg' %}">
+        <img class="thumbnail" src="{{product.imageUrl}}">
         <div class="box-element product">
             <h6><strong>{{product.name}}</strong></h6>
             <hr>
             <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
             <a class="btn btn-outline-success" href="#">View</a>
-            <h4 style="display:inline-block; float:right">{{product.price}}</h4>
+            <h4 style="display:inline-block; float:right">Rs.{{product.price}}</h4>
         </div>
     </div>
     {% endfor %}
