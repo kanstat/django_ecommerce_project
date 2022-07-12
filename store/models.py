@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
+#customer class created
 class Customer(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, null=True, blank=True)
@@ -16,7 +16,7 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
-
+#order class created
 class Order(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, null=True, blank=True)
@@ -36,7 +36,7 @@ class Order(models.Model):
         total = sum([item.quantity for item in orderitems])
         return total
 
-
+#product class created
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     price = models.FloatField()
@@ -54,7 +54,7 @@ class Product(models.Model):
             url = ''
         return url
 
-
+#shipping address class created
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, models.SET_NULL, null=True)
     order = models.ForeignKey(Order, models.SET_NULL, null=True, blank=True)
@@ -64,7 +64,7 @@ class ShippingAddress(models.Model):
     zipcode = models.CharField(max_length=100)
     date_added = models.DateTimeField(auto_now_add=True)
 
-
+#order item class created
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, models.SET_NULL, null=True)
     order = models.ForeignKey(Order, models.SET_NULL, null=True)
